@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ДЗ 15</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.<br>
+		Використати обидва методи стосовно обидвох об’єктів (використати call, apply)</p>
+		<h2>Розвʼязок:</h2>
+		<script>
+			let obg_1={
+				arr: [12,23,43,3,5],
+				sum: function(){
+					return this.arr.reduce((prevSum,el)=>prevSum+el)
+				}
+				}
+			let obg_2={
+				arr: [1,23,45,67,31,17,12],	
+				product: function(minV,maxV){
+					return this.arr.reduce((prevPrud,el)=>el > minV && el < maxV ? prevPrud*el : prevPrud,1)
+				}
+			}
+			let obg_1_call=obg_2.product.call(obg_1,10,40)
+			document.write(`функція call для obg_1. Результат: ${obg_1_call}<br>`)
+			let obg_1_apply=obg_2.product.apply(obg_1,[10,20])
+			document.write(`функція apply для obg_1. Результат: ${obg_1_call}<br>`)
+			let obg_2_call=obg_1.sum.call(obg_2)
+			document.write(`функція call для obg_2. Результат: ${obg_2_call}<br>`)
+			let obg_2_apply=obg_1.sum.apply(obg_2)
+			document.write(`функція apply для obg_2. Результат: ${obg_2_call}<br>`)
+		</script>
+	</main>
+</body>
+</html>

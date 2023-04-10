@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ДЗ 15</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 4. Розробити клас Baner</p>
+		<table border="1px">
+			<tr>
+				<td>Поля</td>
+				<td>Масив об’єктів ( графічних зображень та посилань на сайти)</td>
+			</tr>
+			<tr>
+				<td>методи</td>
+				<td>
+				Метод випадкового вибору об’єкта (графічного зображення та посилання)<br>
+				Метод виведення випадкового банера
+				</td>
+			</tr>
+		</table>
+		<h2>Розвʼязок:</h2>
+		<script>
+			let imgAndLinks=[
+				{
+					img: 'https://file.liga.net/images/general/2020/09/08/20200908171549-5386.jpg?v=1599578314',
+					link: 'https://www.google.com.ua/'
+				},
+				{
+					img:'https://activitycenter.org.ua/wp-content/uploads/2022/04/ukrnet-og-ua.png',
+					link:'https://www.ukr.net/'
+				},
+				{
+					img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Youtube.png/1599px-Youtube.png',
+					link:'https://www.youtube.com/'
+				}
+			]
+			class Baner{
+				constructor(banerArr){
+					this.banerArr=banerArr
+				}
+				getRundom(){
+					let minV=0
+					let maxV=this.banerArr.length-1
+					return Math.floor(Math.random()*(maxV-minV+1)+minV)
+				}
+				getBaner(){
+					let index=this.getRundom()
+					let rundomBaner=this.banerArr[index]
+					return `<a href="${rundomBaner.link}"><img src="${rundomBaner.img}" style="max-width: 200px;"></a>`
+				}
+			}
+			let baner=new Baner(imgAndLinks)
+			document.write(baner.getBaner())
+		</script>
+	</main>
+</body>
+</html>

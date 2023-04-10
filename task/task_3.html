@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ДЗ 15</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+<main>
+	<p>Задача 3. Розробити клас MultChecker для перевірки таблиці множення</p>
+	<table border="1px">
+		<tr>
+			<td>Поля</td>
+			<td>
+				Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7) <br>
+				Кількість правильних відповідей <br>
+				Кількість неправильних відповідей <br>
+			</td>
+		</tr>
+		<tr>
+			<td>Методи</td>
+			<td>
+				Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване) <br>
+				Перевірка правильності вказаної відповіді <br>
+				render - виведення інформації про тестування на екран <br>
+			</td>
+		</tr>
+	</table>
+	<h2>Розвʼязок:</h2>
+	<script>
+		// function MultiCheck(multiplicatonNumber){
+		// 	this.multiplicatonNumber=multiplicatonNumber
+		// 	this.correctAnswer=0
+		// 	this.wrongAnswer=0
+		// }
+		// MultiCheck.prototype.getRandomNumber = function(){
+		// 	return Math.floor(Math.random()*10)+1
+		// }
+		// MultiCheck.prototype.exercise=function(){
+		// 	this.randomNumber=this.getRandomNumber()
+		// 	this.userAnswer=parseInt(prompt(`Надайте відповідь: ${this.multiplicatonNumber} * ${this.randomNumber} = ?`))
+		// 	if (this.userAnswer===this.multiplicatonNumber*this.randomNumber) this.correctAnswer++
+		// 	else this.wrongAnswer++
+		// }
+		// MultiCheck.prototype.getAnswerResult=function(){
+		// 	this.answerResult=this.userAnswer===this.randomNumber*this.multiplicatonNumber
+		// 	return alert(this.answerResult ? 'Вірно' : 'Не вірно')
+		// }
+		// MultiCheck.prototype.getRender = function(){
+		// 	return alert(`Вірних відповідей: ${this.correctAnswer}. Не вірних відповідей: ${this.wrongAnswer}`)
+		// }
+		// const exercise= new MultiCheck(7)
+		// console.log(exercise)
+		// do {
+		// 	exercise.exercise()
+		// 	exercise.getAnswerResult()
+		// } while (confirm('Бажаєте продовжити?'));
+		// exercise.getRender()
+		
+		class MultChecker{
+			constructor (multiplicatonNumber){
+			this.multiplicatonNumber=multiplicatonNumber
+			this.correctAnswer=0
+			this.wrongAnswer=0
+			}
+			getRandomNumber(){
+				return Math.floor(Math.random()*10)+1
+			}
+			exercise(){
+				this.randomNumber=this.getRandomNumber()
+				this.userAnswer=parseInt(prompt(`Надайте відповідь: ${this.multiplicatonNumber} * ${this.randomNumber} = ?`))
+				if (this.userAnswer===this.multiplicatonNumber*this.randomNumber) this.correctAnswer++
+				else this.wrongAnswer++
+			}
+			getAnswerResult(){
+				this.answerResult=this.userAnswer===this.randomNumber*this.multiplicatonNumber
+				return alert(this.answerResult ? 'Вірно' : 'Не вірно')
+			}
+			getRender(){
+				return alert(`Вірних відповідей: ${this.correctAnswer}. Не вірних відповідей: ${this.wrongAnswer}`)
+			}
+		}
+		const exercise= new MultChecker(7)
+		console.log(exercise)
+		do {
+			exercise.exercise()
+			exercise.getAnswerResult()
+		} while (confirm('Бажаєте продовжити?'));
+		exercise.getRender()
+	</script>
+</main>
+</body>
+</html>

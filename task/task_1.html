@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ДЗ 15</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+		<table border=1px>
+			<tr>
+				<td>Тир</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Поля(властивості)</td>
+				<td>Масив, у якому зберігається поле з зайцями</td>
+			</tr>
+			<tr>
+				<td>Методи (дії)</td>
+				<td>Метод пострілу (задається позиція пострілу). Виведення ігрового поля</td>
+			</tr>
+			</table>
+		<p>Розвʼязок:</p>
+		<script>
+			let shooting_galery={
+				// властивість з полем в якому знаходяться зайці
+				rabbitPosition: [0,1,0,1,0],
+				shooting: function (){
+					//виведення поля
+					document.write(`Поле с зайцями: ${this.rabbitPosition}`)
+					let rabbit_left=this.rabbitPosition.reduce((prevSum,el) => el===1 ? prevSum+1 : prevSum,0)
+					do {
+						let userShoot=parseInt(prompt(`Залишилось ${rabbit_left} зайців. Зробіть постріл обравши поле від 0 до ${this.rabbitPosition.length-1}`))
+						if (this.rabbitPosition[userShoot]===1) {
+							rabbit_left--
+							this.rabbitPosition[userShoot]=0
+						}
+					} while (rabbit_left!==0);
+				}
+			}
+			shooting_galery.shooting()
+		</script>
+	
+	</main>
+</body>
+</html>

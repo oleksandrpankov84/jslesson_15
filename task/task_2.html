@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ДЗ 15</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 2. Створити об’єкт «Авто».</p>
+		<table border="1px">
+			<tr>
+			<td>Авто</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Поля(властивості)</td>
+			<td>
+				Марка<br>
+				Розмір бака<br>
+				Кількість наявних літрів<br>
+				Кількість місць<br>
+				Кількість пасажирів
+			</td>
+			</tr>
+			<tr>
+			<td>Методи (дії)</td>
+			<td>
+				Заправка на вказану кількість літрів<br>
+				Виведення кількості пасажирів<br>
+				Додавання пасажирів<br>
+				Висадка пасажирів
+			</td>
+			</tr>
+		</table>
+		<h2>Розвʼязок:</h2>
+		<script>
+			let obg_auto={
+				model: 'Peugeot',
+				tankValue: 60,
+				fuelInTank:20,
+				numberOfPplaces:8,
+				passengers: 3,
+				gas_station: function(){
+					let totalFuel=0
+					do {
+					let gasNeeded=parseInt(prompt(`Заправка авто. Емність баку ${this.tankValue}, наявна кількість палива ${this.fuelInTank}. Вкажіть кількість літрів для заправки від 0 до ${this.tankValue-this.fuelInTank}`))
+					totalFuel=this.fuelInTank+gasNeeded
+					if (totalFuel>this.tankValue) alert('Ви ввели кількість яка буде перевищувати загальний обʼєм вашого баку. Введить корректну кількість літрів.')
+				} while (totalFuel>this.tankValue)
+				return this.fuelInTank=totalFuel
+				},
+				placesOfPassengers: function(){
+					return `Кількість пасажирських місьць ${this.numberOfPplaces}, Наявна кільксть пасажирів ${this.passengers}.`
+				},
+				passengersIn: function(){
+					let freePleces=this.numberOfPplaces-this.passengers
+					let totalPassenger=0
+					do {
+					let passIn=parseInt(prompt(`Введіть кількість пасажирів яка додається. Вільних місьць ${freePleces}`))
+					totalPassenger=passIn+this.passengers
+					if (totalPassenger>this.numberOfPplaces) alert(`Кількітсь вільних місць обмежена. Введіть повторно кількість пассажирів яких берете.`)
+					} while (totalPassenger>this.numberOfPplaces)
+					return this.passengers=totalPassenger
+				},
+				passengersOut:function(){
+					let leftPassengers=0
+					do {
+					let passOut=parseInt(prompt(`Введіть кількість пасажирів яка висадиласть з авто. Загальна кількість пасажирів ${this.passengers}`))
+					leftPassengers=this.passengers-passOut
+					if (leftPassengers<0) alert('У вас не було такої кількості пасажирів. Введіть корректну кількість')
+					} while (leftPassengers<0)
+					return this.passengers=leftPassengers
+				}
+			}
+			let gasInCar=obg_auto.gas_station()
+			document.write(`Кількість літрів у баку після заправки: ${obg_auto.fuelInTank}<br>`)
+			let passInCar=obg_auto.passengersIn()
+			document.write(`Кількість пасажирів після посадки: ${obg_auto.passengers}<br>`)
+			let pasLeft=obg_auto.passengersOut()
+			document.write(`Кількість пасажирів яка залишилась після висадки: ${obg_auto.passengers}<br>`)
+		</script>
+	</main>
+</body>
+</html>
